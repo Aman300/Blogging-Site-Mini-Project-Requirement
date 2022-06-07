@@ -111,7 +111,7 @@ app.get("/loginIndex", async function (req, res) {
                 console.log("error")
             }
         }else{
-            res.redirect('/error')
+            res.redirect('/error');
         }
     }
 
