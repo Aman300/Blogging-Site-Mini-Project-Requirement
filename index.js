@@ -135,7 +135,7 @@ app.get('/delete/:del', async (req, res) => {
     }else{
         let time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
         await studentModule.findByIdAndUpdate({ _id: del, isDeleted: false }, { $set: { isDeleted: true, deletedAt: time} }, { new: true,upsert:true })
-        res.redirect('/loginIndex')
+        res.redirect('/loginIndex');
     }
     
 })
