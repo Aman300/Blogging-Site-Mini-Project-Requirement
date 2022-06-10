@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Aman blog</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Allura' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Fenix' rel='stylesheet'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body{
+            font-family: 'Fenix';
+        }
+        .btn{
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            color: white;
+            /* background-color: #B3001F; */
+            
+        }
+        .btn:hover{            
+            background-color: #B3001F;
+            color: white;          
+
+        }
+        .icon-css:hover{
+           color: #268cdf;
+        }
+        a{
+            color: #B3001F;
+        }
+
+    @media (min-width: 1080px) {
+      .crd {
+        margin-left: 50px;
+      }
+      .bio{
+        position:absolute;
+        margin-left: 1000px;
+      }
+     
+    }
+    @media (max-width: 480px) {
+      h4{
+          font-size: small;
+      }
+      .bio{
+          padding: 20px;
+      }
+      .c{
+          font-size: 30px;
+          font-weight: bold;
+          color: #B3001F;
+      }
+    }
+    </style>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-sm navbar-light bg-danger">
+        <img src="https://classroom-training-bucket.s3.ap-south-1.amazonaws.com/abc/IMG_20220529_164956_573.jpg" style="width: 40px; border-radius: 50px;" alt=""><a class="navbar-brand" href=""></a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                      <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+                  </li>                
+              </ul>
+              <form class="form-group my-2 my-lg-0">
+                <a href="https://amanpost-blog.herokuapp.com/login" type="button" class="btn   my-2 my-sm-0" type="submit">log out</a>
+                <a href="https://amanpost-blog.herokuapp.com/signUp" type="button" class="btn  my-2 my-sm-0" type="submit">create Blog</a>
+
+                  <!-- <a href="http://localhost:3000/login" type="button" class="btn   my-2 my-sm-0" type="submit">Login</a>
+                  <a href="http://localhost:3000/signUp" type="button" class="btn  my-2 my-sm-0" type="submit">SignUp</a> -->
+              </form>
+          </div>
+      </nav>
+      <div class="container-fluid p-5 bg-danger text-center text-white">
+          <h1 style="font-weight: bold">YOUR BLOG</h1>
+      </div><br>
+      <marquee behavior="" direction="">CREATE A NEW BLOG</marquee>
+
+
+
+      <div class="container-fluid my-3 p-4">        
+        <div class="row">
+          <% details.forEach(function(item){ %>
+            <div class="col-xl-8 col-12 ">
+              <div class="card text-left shadow crd">
+                  <img class="card-img-top" src="<%= item.img %>">
+                  <div class="card-body">
+                    <h2 class="card-title"><%= item.title%></h2>
+                    <h5 class="card-title"><%= item.createdAt%></h5>
+                    <h4 class="card-text" style="color: gray"><%= item.content %></h4>
+                    <br>
+                      <a href="https://amanpost-blog.herokuapp.com/delete/<%= item._id %>" onclick="alert('blog deleted')"
+                        class="btn btn-danger form-group">delete blog</a>
+          
+                        <a href="https://amanpost-blog.herokuapp.com/edit/<%= item._id %>" onclick="alert('edit blog')"
+                          class="btn btn-danger form-group ">edit blog</a>
+
+                           <!-- <a href="http://localhost:3000/delete/<%= item._id %>" onclick="alert('blog deleted')"
+                            class="btn btn-danger form-group">delete blog</a>
+
+                            <a href="http://localhost:3000/edit/<%= item._id %>" onclick="alert('edit blog')"
+                                class="btn btn-warning form-group ">edit blog</a> -->
+                  </div>                   
+                </div>
+                <br><br>                 
+            </div>
+            <% }) %>
+
+
+
+      <!-- <div class="container-fluid my-3 p-4">
+          <div class="row">
+              <div class="col-xl-8 col-12 ">
+                <div class="card text-left shadow crd">
+                    <img class="card-img-top" src="https://classroom-training-bucket.s3.ap-south-1.amazonaws.com/abc/amanp.jpg">
+                    <div class="card-body">
+                      <h2 class="card-title">Basic Concepts of Node.js</h2>
+                      <h4 class="card-text" style="color: gray">Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</h4>
+                      <br>
+                      <a href="https://amanpost-blog.herokuapp.com/delete/<%= item._id %>" onclick="alert('blog deleted')"
+                        class="btn btn-danger form-group">delete blog</a>
+          
+                        <a href="https://amanpost-blog.herokuapp.com/edit/<%= item._id %>" onclick="alert('edit blog')"
+                          class="btn btn-danger form-group ">edit blog</a>
+
+                           <!-- <a href="http://localhost:3000/delete/<%= item._id %>" onclick="alert('blog deleted')"
+                            class="btn btn-danger form-group">delete blog</a>
+
+                            <a href="http://localhost:3000/edit/<%= item._id %>" onclick="alert('edit blog')"
+                                class="btn btn-warning form-group ">edit blog</a> -->
+                    <!-- </div>
+                  </div><br><br>
+              </div> --> -->
+
+
+
+
+
+
+        <!-- ----------------   profile       -->
+              <div class="col-xl-4 col-12 bio">
+                <div class="card text-center shadow">
+                    <img class="card-img-top p-5" style="border-radius: 100%"  src="https://classroom-training-bucket.s3.ap-south-1.amazonaws.com/abc/IMG_20220529_164956_573.jpg">
+                    <div class="card-body">
+                      <h1 class="card-title c">Aman web developer</h1>
+                      <h6>owner of this website</h6>
+                      <div style="font-size: 40px">
+                        <a href="#facebook"><i class="fa fa-facebook-square icon-css" aria-hidden="true"></i></a>
+                        <a href="#instagram"><i class="fa fa-instagram icon-css" aria-hidden="true"></i></a>
+                        <a href="#github"><i class="fa fa-github-square icon-css" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+ <!----------------------    footer start               -->
+
+      <footer class="bg-danger text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Form -->
+          <section class="">
+            <form action="">
+              <!--Grid row-->
+              <div class="row d-flex justify-content-center">
+                <!--Grid column-->
+                <div class="col-auto">
+                  <p class="pt-2">
+                    <strong>Sign up for our newsletter</strong>
+                  </p>
+                </div>
+                <!--Grid column-->
+      
+                <!--Grid column-->
+                <div class="col-md-5 col-12">
+                  <!-- Email input -->
+                  <div class="form-outline form-white mb-4">
+                    <input type="email" id="form5Example29" class="form-control" placeholder="Email address" />
+
+                  </div>
+                </div>
+                <!--Grid column-->
+      
+                <!--Grid column-->
+                <div class="col-auto">
+                  <!-- Submit button -->
+                  <button type="submit" class="btn  mb-4">
+                    Subscribe
+                  </button>
+                </div>
+                <!--Grid column-->
+              </div>
+              <!--Grid row-->
+            </form>
+          </section>
+          <!-- Section: Form -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: #B3001F">
+          © 2022 Copyright:
+          <a class="text-white" href="http://amanpost-blog.herokuapp.com/">amanpost.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+
+<!--------------------------------- footer end -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
