@@ -3,9 +3,6 @@
   <head>
     <title>Aman blog</title>
     <!-- Required meta tags -->
-
-    <link rel="icon" href="https://classroom-training-bucket.s3.ap-south-1.amazonaws.com/abc/IMG_20220529_164956_573.jpg" type="image/x-icon">
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -45,10 +42,6 @@
       .crd {
         margin-left: 50px;
       }
-      .bio{
-        position:absolute;
-        margin-left: 1000px;
-      }
      
     }
     @media (max-width: 480px) {
@@ -79,13 +72,9 @@
                       <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
                   </li>                
               </ul>
-              <form class="form-group my-2 my-lg-0">    
-
-                <a href="https://amanpost-blog.herokuapp.com/login" type="button" class="btn   my-2 my-sm-0" type="submit">Login</a>
-                <a href="https://amanpost-blog.herokuapp.com/signUp" type="button" class="btn  my-2 my-sm-0" type="submit">SignUp</a>
-
-                  <!-- <a href="http://localhost:3000/login" type="button" class="btn   my-2 my-sm-0" type="submit">Login</a>
-                  <a href="http://localhost:3000/signUp" type="button" class="btn  my-2 my-sm-0" type="submit">SignUp</a> -->
+              <form class="form-group my-2 my-lg-0">
+                  <button class="btn   my-2 my-sm-0" type="submit">Login</button>
+                  <button class="btn  my-2 my-sm-0" type="submit">SignUp</button>
               </form>
           </div>
       </nav>
@@ -96,26 +85,25 @@
 
 
 
-      
 
-      <div class="container-fluid my-3 p-4">        
+
+      <div class="container-fluid my-3 p-4">
           <div class="row">
-            <% details.forEach(function(item){ %>
               <div class="col-xl-8 col-12 ">
                 <div class="card text-left shadow crd">
-                    <img class="card-img-top" src="<%= item.img %>">
+                    <img class="card-img-top" src="https://classroom-training-bucket.s3.ap-south-1.amazonaws.com/abc/amanp.jpg">
                     <div class="card-body">
-                      <h2 class="card-title"><%= item.title%></h2>
-                      <h5 class="card-title"><%= item.createdAt%></h5>
-                      <h4 class="card-text" style="color: gray"><%= item.content %></h4>
-                    </div>                   
-                  </div>
-                  <br><br>                 
+                      <h2 class="card-title">Basic Concepts of Node.js</h2>
+                      <h4 class="card-text" style="color: gray">Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</h4>
+                    </div>
+                  </div><br><br>
               </div>
-              <% }) %>
-             
-            
-           
+
+
+
+
+
+
         <!-- ----------------   profile       -->
               <div class="col-xl-4 col-12 bio">
                 <div class="card text-center shadow">
@@ -123,7 +111,6 @@
                     <div class="card-body">
                       <h1 class="card-title c">Aman web developer</h1>
                       <h6>owner of this website</h6>
-                      <hr>
                       <div style="font-size: 40px">
                         <a href="#facebook"><i class="fa fa-facebook-square icon-css" aria-hidden="true"></i></a>
                         <a href="#instagram"><i class="fa fa-instagram icon-css" aria-hidden="true"></i></a>
@@ -134,8 +121,6 @@
               </div>
           </div>
       </div>
-      
-
 
  <!----------------------    footer start               -->
 
