@@ -206,7 +206,7 @@ app.get('/createBlog', (req, res) => {
     if (decodedToken) {
         res.sendFile(__dirname + '/public/index.html')
     } else {
-        res.send({ message: "please sign up first" })
+        res.redirect('/error')
     }
 })
 //------------------ [ blog verify  end] ------------------------------------------
