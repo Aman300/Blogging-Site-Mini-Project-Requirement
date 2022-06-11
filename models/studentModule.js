@@ -32,6 +32,6 @@ const authorSchema = new mongoose.Schema({
       createAt: {
         type: String, default: null
       },
-},{timestamps:true})
+},{})
 
 module.exports = mongoose.model("Blog", authorSchema)
