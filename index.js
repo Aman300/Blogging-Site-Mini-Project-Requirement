@@ -232,9 +232,9 @@ app.post('/emailSignUp', async function (req, res) {
     let bodyData = req.body
     let password = bodyData.password
 
-    const saltRounds = 10;
-    const hash = bcrypt.hashSync(password, saltRounds);
-    bodyData.password = hash;
+    // const saltRounds = 10;
+    // const hash = bcrypt.hashSync(password, saltRounds);
+    // bodyData.password = hash;
 
     await emailModule.create(bodyData)
     res.redirect('/login')
@@ -251,11 +251,12 @@ app.post('/isLogin', async function (req, res) {
     let email = req.body.email
     let password = req.body.password
 
-    let checkEmail = await emailModule.findOne({ email: email})
+    let checkEmail = await emailModule.findOne({ email: email, password: password})
+    
 
-    let checkPassword = await bcrypt.compare(password, checkEmail.password)
+    // let checkPassword = await bcrypt.compare(password, checkEmail.password)
 
-    if (checkPassword) {
+    if (checkEmail) {
 
         let token = jwt.sign({
             login: checkEmail._id.toString(),
