@@ -302,6 +302,7 @@ app.post('/create', async function (req, res) {
            let decodedToken = jwt.verify(cook, "key@$%&*0101", { ignoreExpiration: true });
            let login = decodedToken.login
             data.userId = login
+            data.createAt = moment().format('MMMM Do YYYY, h:mm:ss a');
             await studentModule.create(data);
             res.redirect('/loginIndex')
         }

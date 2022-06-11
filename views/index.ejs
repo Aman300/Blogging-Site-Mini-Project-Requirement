@@ -59,9 +59,12 @@
           padding: 20px;
       }
       .c{
-          font-size: 30px;
+          font-size: 25px;
           font-weight: bold;
           color: #B3001F;
+      }
+      h5{
+        font-size: 20px;
       }
     }
     </style>
@@ -106,7 +109,7 @@
                     <img class="card-img-top" src="<%= item.img %>">
                     <div class="card-body">
                       <h2 class="card-title"><%= item.title%></h2>
-                      <h5 class="card-title"><%= item.createdAt%></h5>
+                      <h5 class="card-title"><%= item.createAt%></h5>
                       <h4 class="card-text" style="color: gray"><%= item.content %></h4>
                     </div>                   
                   </div>

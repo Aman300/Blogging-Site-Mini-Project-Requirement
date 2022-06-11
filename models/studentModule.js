@@ -29,7 +29,7 @@ const authorSchema = new mongoose.Schema({
       deletedAt: {
         type: String, default: null
       },
-      createdAt: {
+      createAt: {
         type: String, default: null
       },
 },{timestamps:true})
