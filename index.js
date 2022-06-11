@@ -252,9 +252,6 @@ app.post('/isLogin', async function (req, res) {
     let password = req.body.password
 
     let checkEmail = await emailModule.findOne({ email: email})
-    if(checkEmail != email){
-        res.redirect('/error')
-    }
 
     let checkPassword = await bcrypt.compare(password, checkEmail.password)
 
