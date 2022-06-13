@@ -310,6 +310,12 @@ app.post('/create', async function (req, res) {
 })
 
 
+app.get('/blogdata',async (req,res)=>{
+    let allData = await studentModule.find()
+    res.send({alldata:allData})
+})
+
+
 
 
 
