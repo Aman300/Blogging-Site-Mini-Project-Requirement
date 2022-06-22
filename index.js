@@ -104,10 +104,9 @@ app.get("/loginIndex", async function (req, res) {
         let login = decodedToken.login
         console.log(login)
         if (decodedToken) {
-            let UserName = await studentModule.findOne({userId:login, isDeleted: false}).populate("userId").sort({ _id: -1 })
-            let allData = await studentModule.find({userId:login, isDeleted: false}).sort({ _id: -1 })
+            let allData = await studentModule.find({userId:login, isDeleted: false}).populate("userId").sort({ _id: -1 })
             if (allData) {
-                res.render("loginIndex", { details: allData, details_1: UserName })
+                res.render("loginIndex", { details: allData })
             } else {
                 console.log("error")
             }
