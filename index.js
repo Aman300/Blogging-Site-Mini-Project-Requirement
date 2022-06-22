@@ -104,7 +104,7 @@ app.get("/loginIndex", async function (req, res) {
         let login = decodedToken.login
         console.log(login)
         if (decodedToken) {
-            let allData = await studentModule.find({userId:login, isDeleted: false}).populate("userId").sort({ _id: -1 })
+            let allData = await studentModule.find({userId:login, isDeleted: false}).sort({ _id: -1 })
             if (allData) {
                 res.render("loginIndex", { details: allData })
             } else {
@@ -117,6 +117,34 @@ app.get("/loginIndex", async function (req, res) {
 
 
 })
+
+
+//------------------ fetch name user ------------------------------
+
+app.get("/loginIndex", async function (req, res) {
+    let cook = req.cookies.jwt
+    console.log(cook)
+    if (!cook) {
+        res.redirect('/error')
+    } else {
+        let decodedToken = jwt.verify(cook, "key@$%&*0101", { ignoreExpiration: true });
+        let login = decodedToken.login
+        console.log(login)
+        if (decodedToken) {
+            let allData = await studentModule.findOne({userId:login, isDeleted: false}).populate("userId").sort({ _id: -1 })
+            if (allData) {
+                res.render("loginIndex", { details_1: allData })
+            } else {
+                console.log("error")
+            }
+        }else{
+            res.redirect('/error');
+        }
+    }
+
+
+})
+
 //------------------ [ index page 2 end] ------------------------------------------
 
 
