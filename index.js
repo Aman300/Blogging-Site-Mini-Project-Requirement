@@ -104,7 +104,7 @@ app.get("/loginIndex", async function (req, res) {
         let login = decodedToken.login
         console.log(login)
         if (decodedToken) {
-            let allData = await studentModule.find({userId:login, isDeleted: false}).sort({ _id: -1 })
+            let allData = await studentModule.find({userId:login, isDeleted: false}).populate("userId").sort({ _id: -1 })
             if (allData) {
                 res.render("loginIndex", { details: allData })
             } else {
@@ -230,7 +230,7 @@ app.get("/login", async function (req, res) {
 
 app.post('/emailSignUp', async function (req, res) {
     let bodyData = req.body
-    let password = bodyData.password
+    //let password = bodyData.password
 
     // const saltRounds = 10;
     // const hash = bcrypt.hashSync(password, saltRounds);
@@ -312,6 +312,12 @@ app.post('/create', async function (req, res) {
 
 app.get('/blogdata',async (req,res)=>{
     let allData = await studentModule.find()
+    res.send({alldata:allData})
+})
+
+
+app.get('/blogdata2',async (req,res)=>{
+    let allData = await studentModule.find().populate("userId")
     res.send({alldata:allData})
 })
 
