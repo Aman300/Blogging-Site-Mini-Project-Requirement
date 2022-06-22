@@ -81,9 +81,9 @@
                   </li>                
               </ul>
               <form class="form-group my-2 my-lg-0">
-                <% details.forEach(function(item){ %>    
-                  <a class="btn text-white bg-danger my-2 my-sm-0" type="submit"><%= item.userId.fname%></a>
-                  <% }) %>
+                
+                  <a class="btn text-white bg-danger my-2 my-sm-0" type="submit"><%= details[0].item.userId.fname%></a>
+                
                 <a href="https://amanpost-blog.herokuapp.com/logout" type="button" class="btn   my-2 my-sm-0" type="submit">log out</a>
                 <a href="https://amanpost-blog.herokuapp.com/createBlog" type="button" class="btn  my-2 my-sm-0" type="submit">create Blog</a>
 
