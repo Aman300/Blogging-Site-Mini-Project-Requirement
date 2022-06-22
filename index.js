@@ -107,7 +107,7 @@ app.get("/loginIndex", async function (req, res) {
             let UserName = await studentModule.findOne({userId:login, isDeleted: false}).populate("userId").sort({ _id: -1 })
             let allData = await studentModule.find({userId:login, isDeleted: false}).sort({ _id: -1 })
             if (allData) {
-                res.render("loginIndex", { details_1: UserName }, { details: allData })
+                res.render("loginIndex", { details: allData, details_1: UserName })
             } else {
                 console.log("error")
             }
