@@ -11,6 +11,7 @@ const aws = require("aws-sdk")
 const multer = require("multer");
 const jwt = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
+const path = require('path')
 const { ApiGatewayV2 } = require('aws-sdk');
 app.use(cookieParser())
 
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs')
+app.use(express.static(path.join(__dirname, 'views')))
 
 mongoose.connect("mongodb+srv://Aman300:ByXZ2qfTNQNWF7Uj@cluster0.o4rcy.mongodb.net/blogPost-DB?retryWrites=true&w=majority", {
     useNewUrlParser: true
@@ -319,6 +321,16 @@ app.get('/blogdata',async (req,res)=>{
 app.get('/blogdata2',async (req,res)=>{
     let allData = await studentModule.find().populate("userId")
     res.send({alldata:allData})
+})
+
+app.get('/deleteOne',async (req,res)=>{
+    await studentModule.deleteOne()
+    res.redirect('/')
+})
+
+app.get('/deleteMany',async (req,res)=>{
+    await studentModule.deleteMany()
+    res.redirect('/')
 })
 
 
