@@ -18,6 +18,19 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
+      body::-webkit-scrollbar {
+        width: 15px;               /* width of the entire scrollbar */
+      }
+
+      body::-webkit-scrollbar-track {
+        background: rgb(220,53,69)        /* color of the tracking area */
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background-color: white;    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+        border: 3px solid rgb(220,53,69)  /* creates padding around scroll thumb */
+      }
         body{
             font-family: 'Fenix';
         }
@@ -47,6 +60,10 @@
       }
       .crdd{
         margin: 20px;
+      }
+      .bio{
+        position: absolute;
+        margin-left: 1250px;
       }
     }
     @media (max-width: 480px) {
