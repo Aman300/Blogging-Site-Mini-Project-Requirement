@@ -123,10 +123,10 @@
                     <h5 class="card-title"><%= item.createAt%></h5>
                     <h4 class="card-text" style="color: gray"><%= item.content %></h4>
                     <br>
-                      <a href="https://amanpost-blog.herokuapp.com/delete/<%= item._id %>" onclick="alert('blog deleted')"
+                      <a href="https://amanpost-blog.herokuapp.com/delete/<%= item._id %>" onclick="return confirm('Are you sure to delete?')"
                         class="btn btn-danger form-group">delete blog</a>
           
-                        <a href="https://amanpost-blog.herokuapp.com/edit/<%= item._id %>" onclick="alert('edit blog')"
+                        <a href="https://amanpost-blog.herokuapp.com/edit/<%= item._id %>" onclick="return confirm('Are you sure to edit?')"
                           class="btn btn-danger form-group ">edit blog</a>
 
                            <!-- <a href="http://localhost:3000/delete/<%= item._id %>" onclick="alert('blog deleted')"
@@ -134,6 +134,7 @@
 
                             <a href="http://localhost:3000/edit/<%= item._id %>" onclick="alert('edit blog')"
                                 class="btn btn-warning form-group ">edit blog</a> -->
+
                   </div>                   
                 </div>
                 <br><br>                 
