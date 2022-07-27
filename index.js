@@ -433,7 +433,7 @@ passport.serializeUser(function(user, done) {
 
         res.setHeader(token, "Blog_post_Aman")
         res.cookie("jwt", token, { expires: new Date(new Date().getTime() + 60 * 60 * 1000), httpOnly: true });
-
+        res.redirect('/loginIndex')
        
     } else {
         //res.send(`<script>alert('Please check email or password')</script>`)
