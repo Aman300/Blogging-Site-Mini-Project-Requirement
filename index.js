@@ -413,10 +413,7 @@ passport.serializeUser(function(user, done) {
       let bodydata = {fname,email,password}
 
       console.log(bodydata)
-
-
-
-    await emailModule.create(bodydata)
+    
 
     let userEmail = email
     let userPassword = password
@@ -437,10 +434,11 @@ passport.serializeUser(function(user, done) {
         res.setHeader(token, "Blog_post_Aman")
         res.cookie("jwt", token, { expires: new Date(new Date().getTime() + 60 * 60 * 1000), httpOnly: true });
 
-        res.redirect('/loginIndex')
+       
     } else {
         //res.send(`<script>alert('Please check email or password')</script>`)
-        res.redirect('/error')
+        await emailModule.create(bodydata)
+        res.redirect('/loginIndex')
     }
 
     });
