@@ -232,6 +232,7 @@ app.get("/login", async function (req, res) {
 
 app.post('/emailSignUp', async function (req, res) {
     let bodyData = req.body
+    console.log(bodyData)
     //let password = bodyData.password
 
     // const saltRounds = 10;
@@ -353,7 +354,98 @@ app.get('/logout', function (req, res) {
 //------------------ [ logout end  ] ------------------------------------------
 
 
+var session = require('cookie-session');
+var session = require('express-session')
+const passport = require("passport");
+const { userInfo } = require('os');
 
+
+
+app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: 'SECRET'
+  }));
+
+
+app.use(passport.initialize())
+
+
+passport.serializeUser(function(user, done) {
+    done(null, user)
+  })
+  passport.deserializeUser(function(user, done) {
+    done(null, user)
+  })
+
+
+
+  // ------------- google auth ------------------------//
+
+  const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+  const GOOGLE_CLIENT_ID = '994089075007-kgk9vh4rn7b9imra5ic5pm5nnp614os0.apps.googleusercontent.com';
+  const GOOGLE_CLIENT_SECRET = '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';
+  passport.use(new GoogleStrategy({
+      clientID: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET,
+      callbackURL: "https://amanpost-blog.herokuapp.com/auth/google/secret"
+    },
+    function(accessToken, refreshToken, profile, done) {
+        userProfile=profile;
+        return done(null, userProfile);
+    }
+  ));
+   
+  app.get('/auth/google', 
+    passport.authenticate('google', { scope : ['profile', 'email'] }));
+   
+  app.get('/auth/google/secret', 
+    passport.authenticate('google', { failureRedirect: '/error' }),
+    async function(req, res) {
+      // Successful authentication, redirect success.
+      //res.redirect('secret');
+      let userinfo = req.user._json
+      let userdata = req.user
+      let fname = userinfo.name
+      let email = userinfo.email
+      let password = userdata.id
+
+      let bodydata = {fname,email,password}
+
+      console.log(bodydata)
+
+
+
+    await emailModule.create(bodydata)
+
+    let userEmail = email
+    let userPassword = password
+
+    let checkEmail = await emailModule.findOne({ email: userEmail, password: userPassword})
+    
+
+    // let checkPassword = await bcrypt.compare(password, checkEmail.password)
+
+    if (checkEmail) {
+
+        let token = jwt.sign({
+            login: checkEmail._id.toString(),
+            orgnization: "Blog_post_Aman",
+
+        }, "key@$%&*0101")
+
+        res.setHeader(token, "Blog_post_Aman")
+        res.cookie("jwt", token, { expires: new Date(new Date().getTime() + 60 * 60 * 1000), httpOnly: true });
+
+        res.redirect('/loginIndex')
+    } else {
+        //res.send(`<script>alert('Please check email or password')</script>`)
+        res.redirect('/error')
+    }
+
+    });
+  
+    // ------------- google auth end ------------------------//
 
 
 
