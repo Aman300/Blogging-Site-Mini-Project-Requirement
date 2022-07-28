@@ -90,15 +90,15 @@
           <div class="collapse navbar-collapse" id="collapsibleNavId">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                   <li class="nav-item active">
-                      <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+                      <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
                   </li>                
               </ul>
               <form class="form-group my-2 my-lg-0">
                 <% details.forEach(function(item){ %>    
                   <a class="btn text-white bg-danger my-2 my-sm-0" type="submit"><%= item.userId.fname%></a>
                   <% }) %>
-                <a href="https://amanpost-blog.herokuapp.com/logout" type="button" class="btn   my-2 my-sm-0" type="submit">log out</a>
-                <a href="https://amanpost-blog.herokuapp.com/createBlog" type="button" class="btn  my-2 my-sm-0" type="submit">create Blog</a>
+                <a href="/logout" type="button" class="btn   my-2 my-sm-0" type="submit">log out</a>
+                <a href="/createBlog" type="button" class="btn  my-2 my-sm-0" type="submit">create Blog</a>
 
                   <!-- <a href="http://localhost:3000/login" type="button" class="btn   my-2 my-sm-0" type="submit">Login</a>
                   <a href="http://localhost:3000/signUp" type="button" class="btn  my-2 my-sm-0" type="submit">SignUp</a> -->
@@ -123,10 +123,10 @@
                     <h5 class="card-title"><%= item.createAt%></h5>
                     <h4 class="card-text" style="color: gray"><%= item.content %></h4>
                     <br>
-                      <a href="https://amanpost-blog.herokuapp.com/delete/<%= item._id %>" onclick="return confirm('Are you sure to delete?')"
+                      <a href="/delete/<%= item._id %>" onclick="return confirm('Are you sure to delete?')"
                         class="btn btn-danger form-group">delete blog</a>
           
-                        <a href="https://amanpost-blog.herokuapp.com/edit/<%= item._id %>" onclick="return confirm('Are you sure to edit?')"
+                        <a href="/edit/<%= item._id %>" onclick="return confirm('Are you sure to edit?')"
                           class="btn btn-danger form-group ">edit blog</a>
 
                            <!-- <a href="http://localhost:3000/delete/<%= item._id %>" onclick="alert('blog deleted')"
