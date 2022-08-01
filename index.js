@@ -237,7 +237,7 @@ app.post('/emailSignUp', async function (req, res) {
 
     // const saltRounds = 10;
     // const hash = bcrypt.hashSync(password, saltRounds);
-    // bodyData.password = hash;
+    // bodyData.password = hash
 
     await emailModule.create(bodyData)
     res.redirect('/login')
